@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import Image from 'next/image';
+import Carousel from 'components/common/carousel/Carousel';
 import { IMain } from 'src/types/wisdo';
 
 import styled, { css } from 'styled-components';
@@ -53,28 +53,7 @@ const MainContent: FC<IMain> = ({ wisdoList }) => {
 				<Category key={categoryName}>
 					<Title>{categoryName.toUpperCase()}</Title>
 					<Subtitle>{'IDENTITY'}</Subtitle>
-					<CarouserWrapper>
-						<div>
-							{items.map(({ image }) => (
-								<div
-									key={image}
-									style={{
-										width: '168px',
-										height: '117px',
-										position: 'relative',
-									}}
-								>
-									<Image
-										src={image}
-										layout="responsive"
-										width={'100%'}
-										height={'100%'}
-										alt="image"
-									/>
-								</div>
-							))}
-						</div>
-					</CarouserWrapper>
+					<Carousel slides={items} />
 				</Category>
 			))}
 		</MainContentUI>
