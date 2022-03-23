@@ -1,4 +1,4 @@
-import MainLogoSVG from '/public/images/main-logo-svg.svg';
+import MainLogoSVG from 'public/images/main-logo-svg.svg';
 
 import styled from 'styled-components';
 

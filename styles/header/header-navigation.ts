@@ -1,4 +1,4 @@
-import NavigatorSVG from '/public/images/navigator-svg.svg';
+import NavigatorSVG from 'public/images/navigator-svg.svg';
 
 import styled from 'styled-components';
 

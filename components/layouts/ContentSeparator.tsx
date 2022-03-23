@@ -1,4 +1,4 @@
-import { FC, ReactElement } from 'react';
+import { FC, ReactChild, ReactElement } from 'react';
 
 import styled from 'styled-components';
 
@@ -7,16 +7,16 @@ const ContentSeparatorWrapper = styled.div`
 `;
 
 const LeftSide = styled.div`
-	flex: 1;
+	flex: 2;
 `;
 
 const RightSide = styled.div`
-	flex: 3;
+	flex: 5;
 `;
 
 interface IContentSeparator {
 	LeftSideComponent?: ReactElement;
-	RightSideComponent?: ReactElement;
+	RightSideComponent?: ReactElement | ReactChild;
 }
 
 const ContentSeparator: FC<IContentSeparator> = ({ LeftSideComponent, RightSideComponent }) => {

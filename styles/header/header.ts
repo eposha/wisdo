@@ -5,4 +5,5 @@ export const HeaderContainer = styled.header`
 	justify-content: center;
 	padding: 10px;
 	background-color: #fff;
+	border-bottom: 1px solid #dbdbdb;
 `;
