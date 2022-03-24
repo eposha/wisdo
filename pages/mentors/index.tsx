@@ -1,5 +1,11 @@
+import { MainContainer } from 'styles/common/main-container';
+
 const Mentors = () => {
-	return <h1>Mentors</h1>;
+	return (
+		<MainContainer>
+			<h1>Mentors</h1>
+		</MainContainer>
+	);
 };
 
 export default Mentors;
