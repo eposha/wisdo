@@ -1,48 +1,11 @@
 import React, { FC, useState, useEffect, useCallback } from 'react';
-import Image from 'next/image';
 
 import { IWisdoItem } from 'src/types/wisdo';
-
-import styled from 'styled-components';
-
+import { ArrowButton } from 'components/common/carousel/Buttons';
 import useEmblaCarousel from 'embla-carousel-react';
+import { convertNumberToCounts } from 'src/helpers/convertNumberToCounts';
 
-const Embla = styled.div`
-	position: relative;
-	background-color: #f7f7f7;
-
-	width: 732px;
-	margin-left: 0;
-`;
-
-const Viewport = styled.div`
-	overflow: hidden;
-	width: 100%;
-`;
-
-const Container = styled.div`
-	display: flex;
-	user-select: none;
-	-webkit-touch-callout: none;
-	-khtml-user-select: none;
-	-webkit-tap-highlight-color: transparent;
-`;
-
-const Slide = styled.div`
-	position: relative;
-	width: 168px;
-	max-width: 168px;
-	height: 117px;
-	min-width: 25%;
-`;
-
-const SlideInner = styled.div`
-	position: relative;
-	margin-right: 20px;
-	overflow: hidden;
-
-	height: 117px;
-`;
+import * as UI from 'styles/carousel/carousel';
 
 interface ICarousel {
 	slides: IWisdoItem[];
@@ -71,21 +34,37 @@ const Carousel: FC<ICarousel> = ({ slides }) => {
 	}, [embla, onSelect]);
 
 	return (
-		<Embla>
-			<Viewport ref={viewportRef}>
-				<Container>
-					{slides.map(({ image }) => (
-						<Slide key={image}>
-							<SlideInner>
-								<Image src={image} objectFit="cover" layout="fill" alt="image" />
-							</SlideInner>
-						</Slide>
+		<UI.Embla>
+			<UI.Viewport ref={viewportRef}>
+				<UI.Container>
+					{slides.map(({ title, image, membersCount }) => (
+						<UI.Slide key={image}>
+							<UI.SlideInner>
+								<UI.ImageWrapper>
+									<UI.Image
+										src={image}
+										objectFit="cover"
+										layout="fill"
+										alt="image"
+										priority
+									/>
+								</UI.ImageWrapper>
+								<UI.CardTitle>{title}</UI.CardTitle>
+								<UI.CountMembers>
+									{convertNumberToCounts(membersCount) + ' Members'}
+								</UI.CountMembers>
+							</UI.SlideInner>
+						</UI.Slide>
 					))}
-				</Container>
-			</Viewport>
-			{/* <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
-			<NextButton onClick={scrollNext} enabled={nextBtnEnabled} /> */}
-		</Embla>
+				</UI.Container>
+			</UI.Viewport>
+			{slides.length > 4 && (
+				<>
+					<ArrowButton onClick={scrollPrev} enabled={prevBtnEnabled} />
+					<ArrowButton onClick={scrollNext} enabled={nextBtnEnabled} isRightButton />
+				</>
+			)}
+		</UI.Embla>
 	);
 };
 

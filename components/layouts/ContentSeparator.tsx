@@ -7,11 +7,11 @@ const ContentSeparatorWrapper = styled.div`
 `;
 
 const LeftSide = styled.div`
-	flex: 2;
+	flex: 1;
 `;
 
 const RightSide = styled.div`
-	flex: 5;
+	flex: 3;
 `;
 
 interface IContentSeparator {

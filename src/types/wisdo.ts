@@ -1,8 +1,8 @@
 export interface IWisdoItem {
-	titles: string;
+	title: string;
 	image: string;
-	descriptions: string;
-	membersCounts: number;
+	description: string;
+	membersCount: number;
 	lifeChallengeIds: string;
 }
 
