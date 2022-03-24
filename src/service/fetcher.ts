@@ -5,7 +5,7 @@ const responseErrorHandler = (error: AxiosError): Promise<AxiosError> => {
 		if (typeof window === 'undefined') {
 			throw new Error();
 		} else {
-			window.location.href = '/500';
+			window.location.href = '/error';
 		}
 	}
 
