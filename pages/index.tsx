@@ -27,7 +27,7 @@ const Main: NextPage<IMain> = ({ wisdoList }) => {
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 	try {
 		const { data }: AxiosResponse<IWisdo[]> = await fetcher.get('/feed');
-		res.setHeader('Cache-Control', `private, s-maxage=1, stale-while-revalidate=18000`);
+		res.setHeader('Cache-Control', `private, s-maxage=1, stale-while-revalidate=720000`);
 
 		return {
 			props: {
